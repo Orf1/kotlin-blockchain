@@ -22,9 +22,9 @@ class Block (val data: String, val previousHash: String, val timeStamp: Long) {
         while (!hash.startsWith(prefix)) {
             nonce++
             hash = hash(this.toString())
-            if(hash.startsWith("0000")) {
-                println(hash)
-            }
+//            if(hash.startsWith("0000")) {
+//                println(hash)
+//            }
         }
         return hash
     }
