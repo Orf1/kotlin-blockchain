@@ -5,9 +5,10 @@ class Block(
     private val previousHash: String,
     private val timeStamp: Long
 ) {
-    var hashedBlock = hash(this.toString())
+    var hashedBlock =
+        hash(this.toString())
 
-    private var nonce = 0
+    var nonce = 0
 
     /**
      * The [String] form of this hashing block.
