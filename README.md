@@ -33,10 +33,12 @@ bc.blockchain.add(block)
 Example Output:
 ```
 Creating blockchain with genesis block.
-Unverified block hash: 3aa4e569311dbeb9532ef8b84fa440a052afb2995d2de0389152ca05b3c3d60f
+Creating new block.
+Block: Data: Hello Blockchain! Previous Hash: c93742f678e8beb33f4b6b80f3a50cabe77513f97081c9fe587d683f3a1cbfa7 Timestamp: 1644266765325
+Unverified block hash: 1c85faeed128b7604b9e31257b13a4fbcce03715c200205d983b06bcda8d7705
 Attempting to mine block.
-Calculating hash took 2261122 attempts.
 Successfully mined block!
-Verified block hash: 00000c4c3f695c102b5766999d8f701d9f73bcec69846bffc4b078a2124fc64a
+Calculating hash took 763541 attempts.
+Verified block hash: 000000613e4f6ab796a9c3501a01a734e52634732c85ab59630472aaca992e33
 Added verified block to blockchain.
 ```
