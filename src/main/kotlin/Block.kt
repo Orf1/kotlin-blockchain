@@ -5,7 +5,7 @@ class Block(
     private val previousHash: String,
     private val timeStamp: Long
 ) {
-    var hash = hash(this.toString())
+    var hashedBlock = hash(this.toString())
 
     private var nonce = 0
 
@@ -37,11 +37,13 @@ class Block(
      * Mines this block to specified prefix.
      */
     fun mine(prefix: String): String {
-        while (!hash.startsWith(prefix)) {
+        while (!hashedBlock.startsWith(prefix)) {
             nonce += 1
-            hash = hash(this.toString())
+            hashedBlock = hash(
+                this.toString()
+            )
         }
 
-        return hash
+        return hashedBlock
     }
 }

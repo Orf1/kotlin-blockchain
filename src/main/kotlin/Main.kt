@@ -13,11 +13,11 @@ fun main() {
     // Creates first additional block to mine.
     val block = Block(
         "Hello Blockchain!",
-        blockchain.blockchain[blockchain.blockchain.size -1].hash,
+        blockchain.blockchain[blockchain.blockchain.size -1].hashedBlock,
         System.currentTimeMillis()
     )
 
-    println("Unverified block hash: ${block.hash}")
+    println("Unverified block hash: ${block.hashedBlock}")
     println("Attempting to mine block.")
 
     // Brute forces until valid hash is found.
@@ -25,7 +25,7 @@ fun main() {
 
     println("Successfully mined block!")
     println("Calculating hash took ${block.nonce} attempts.")
-    println("Verified block hash: ${block.hash}")
+    println("Verified block hash: ${block.hashedBlock}")
 
     // Adds verified block to blockchain.
     blockchain.blockchain.add(block)
