@@ -1,31 +1,50 @@
 import java.security.MessageDigest
 
-class Block (val data: String, val previousHash: String, val timeStamp: Long) {
-    var hash: String = hash(this.toString())
+class Block(
+    private val data: String,
+    private val previousHash: String,
+    private val timeStamp: Long
+) {
+    var hashedBlock =
+        hash(this.toString())
+
     var nonce = 0
 
-    // Builds String used when hashing block.
-    override fun toString(): String {
-        return data + previousHash + timeStamp.toString() + nonce
-    }
+    /**
+     * The [String] form of this hashing block.
+     */
+    override fun toString() =
+        "$data$previousHash$timeStamp$nonce"
 
-    // Finds the SHA-256 hash of a String.
-    private fun hash(toHash: String): String {
-        val bytes = toHash.toByteArray()
-        val md = MessageDigest.getInstance("SHA-256")
-        val digest = md.digest(bytes)
-        return digest.fold("") { str, it -> str + "%02x".format(it) }
-    }
+    /**
+     * Finds the SHA-256 hash of a String.
+     *
+     * @param input the input
+     * @return the SHA-256 hashed output
+     */
+    private fun hash(input: String): String {
+        val sha256 = MessageDigest
+            .getInstance("SHA-256")
 
-    // Mines block to specified prefix.
-    fun mine(prefix: String): String {
-        while (!hash.startsWith(prefix)) {
-            nonce++
-            hash = hash(this.toString())
-//            if(hash.startsWith("0000")) {
-//                println(hash)
-//            }
+        val bytes = input.toByteArray()
+        val digest = sha256.digest(bytes)
+
+        return digest.fold("") { str, it ->
+             "$str${"%02x".format(it)}"
         }
-        return hash
+    }
+
+    /**
+     * Mines this block to specified prefix.
+     */
+    fun mine(prefix: String): String {
+        while (!hashedBlock.startsWith(prefix)) {
+            nonce += 1
+            hashedBlock = hash(
+                this.toString()
+            )
+        }
+
+        return hashedBlock
     }
 }
