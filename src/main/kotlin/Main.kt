@@ -2,10 +2,20 @@ fun main() {
     println("Creating blockchain with genesis block.")
 
     // Creates a new blockchain with a genesis block.
-    val bc = Blockchain(Block("Genesis Block", "", System.currentTimeMillis()))
+    val blockchain = Blockchain(
+        Block(
+            "Genesis Block",
+            "",
+            System.currentTimeMillis()
+        )
+    )
 
     // Creates first additional block to mine.
-    val block = Block("Hello Blockchain!", bc.blockchain[bc.blockchain.size -1].hash, System.currentTimeMillis())
+    val block = Block(
+        "Hello Blockchain!",
+        blockchain.blockchain[blockchain.blockchain.size -1].hash,
+        System.currentTimeMillis()
+    )
 
     println("Unverified block hash: ${block.hash}")
     println("Attempting to mine block.")
@@ -17,7 +27,7 @@ fun main() {
     println("Verified block hash: ${block.hash}")
 
     // Adds verified block to blockchain.
-    bc.blockchain.add(block)
+    blockchain.blockchain.add(block)
 
     println("Added verified block to blockchain.")
 }
