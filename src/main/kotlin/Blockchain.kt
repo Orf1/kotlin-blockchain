@@ -1,7 +1,8 @@
-class Blockchain {
+class Blockchain(block: Block) {
     val blockchain: MutableList<Block> = ArrayList()
 
+    // Adds the initial/genesis block to the blockchain.
     init {
-        blockchain.add(Block("Genesis Block", "", System.currentTimeMillis()))
+        blockchain.add(block)
     }
 }
