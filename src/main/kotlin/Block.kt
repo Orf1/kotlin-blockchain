@@ -40,10 +40,6 @@ class Block(
         while (!hash.startsWith(prefix)) {
             nonce += 1
             hash = hash(this.toString())
-
-            if (hash.startsWith("0000")) {
-                println(hash)
-            }
         }
 
         return hash

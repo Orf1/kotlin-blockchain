@@ -24,6 +24,7 @@ fun main() {
     block.mine("00000")
 
     println("Successfully mined block!")
+    println("Calculating hash took ${block.nonce} attempts.")
     println("Verified block hash: ${block.hash}")
 
     // Adds verified block to blockchain.
