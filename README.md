@@ -23,7 +23,7 @@ val bc = Blockchain(Block("Genesis Block", "", System.currentTimeMillis()))
 // Creates a new block to add to the chain.
 val block = Block("Hello Blockchain!", bc.blockchain[bc.blockchain.size -1].hash, System.currentTimeMillis())
 
-/ Mines block to verify it.
+// Mines block to verify it.
 block.mine("00000")
 
 // Adds verified block to the blockchain.
